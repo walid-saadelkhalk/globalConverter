@@ -7,6 +7,7 @@ public class Text {
 
 
     public String getText() {
+<<<<<<< HEAD
         String text;
         while (true) {
             
@@ -18,6 +19,20 @@ public class Text {
             }
         }
         return text;
+=======
+        System.out.println("Enter the text you want to convert: ");
+        return input.nextLine();
+    }
+
+    public boolean askForEncryption() {
+        System.out.println("Do you want to encrypt the text before converting to hexadecimal? (yes/no): ");
+        String response = input.nextLine();
+        return response.equalsIgnoreCase("yes");
+    }
+
+    public int getShiftValue() {
+        return input.nextInt();
+>>>>>>> 60f6114 ([CREATED] created class Encrypt.java that encrypt our string input before convert it into hexa)
     }
 
     public void getChoice(int choice) {
