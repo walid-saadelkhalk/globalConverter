@@ -1,15 +1,18 @@
 package encrypt;
 
 import java.util.Scanner;
+import convert.ConvertTo;
 
 public class Encrypt {
     private Scanner input = new Scanner(System.in);
+    private ConvertTo converter = new ConvertTo();
 
     public int getShiftValue() {
+        System.out.println("Enter the shift value for Caesar cipher: ");
         return input.nextInt();
     }
 
-    public String encryptText(String text, int shift) {
+    public String encryptAndConvert(String text, int shift) {
         StringBuilder encrypted = new StringBuilder();
         for (char c : text.toCharArray()) {
             if (Character.isLetter(c)) {
@@ -18,6 +21,30 @@ public class Encrypt {
             }
             encrypted.append(c);
         }
-        return encrypted.toString();
+        String encryptedText = encrypted.toString();
+        
+
+        // Ask if the user wants to convert the encrypted text
+        System.out.println("Do you want to convert the encrypted text to a different base? (yes/no): ");
+        input.nextLine(); // Consume newline left-over
+        String convertResponse = input.nextLine();
+        if (convertResponse.equalsIgnoreCase("yes")) {
+            int encodingChoice;
+            do {
+                System.out.println("Choose the encoding: 1 for Hexadecimal, 2 for Binary, 3 for Octal, 4 for Decimal");
+                encodingChoice = input.nextInt();
+                input.nextLine(); // Consume newline left-over
+                if (encodingChoice < 1 || encodingChoice > 4) {
+                    System.out.println("Invalid choice. Please enter a number between 1 and 4.");
+                }
+            } while (encodingChoice < 1 || encodingChoice > 4);
+
+            String convertedText = converter.convertAndPrint(encryptedText, encodingChoice);
+            return convertedText;
+        } else {
+            System.out.println("Not converting the encrypted text.");
+            System.out.println("Encrypted text: " + encryptedText);
+            return encryptedText;
+        }
     }
 }

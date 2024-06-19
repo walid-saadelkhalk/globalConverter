@@ -2,13 +2,7 @@ package convert;
 
 public class ConvertTo {
 
-
     public String toBase(String input, int base) {
-        /*
-         * StringBuilder is a mutable sequence of characters. 
-         * It can modify the sequence of characters in the string without creating a new object.
-         */
-
         StringBuilder baseString = new StringBuilder();
         for (char c : input.toCharArray()) {
             baseString.append(intToBase((int) c, base));
@@ -16,7 +10,6 @@ public class ConvertTo {
         return baseString.toString();
     }
 
-    // Convert an integer to a base
     private String intToBase(int num, int base) {
         /*
          * Check if the base is between 2 and 36.
@@ -45,23 +38,29 @@ public class ConvertTo {
         return baseChars.reverse().toString();
     }
 
-    public void convertAndPrint(String inputText, int choice) {
+    public String convertAndPrint(String inputText, int choice) {
+        String result = "";
         switch (choice) {
-            case 16:
-                System.out.println("Hexadecimal: " + toBase(inputText, 16));
+            case 1:
+                result = toBase(inputText, 16);
+                System.out.println("Hexadecimal: " + result);
                 break;
             case 2:
-                System.out.println("Binary: " + toBase(inputText, 2));
+                result = toBase(inputText, 2);
+                System.out.println("Binary: " + result);
                 break;
-            case 8:
-                System.out.println("Octal: " + toBase(inputText, 8));
+            case 3:
+                result = toBase(inputText, 8);
+                System.out.println("Octal: " + result);
                 break;
-            case 10:
-                System.out.println("Decimal: " + toBase(inputText, 10));
+            case 4:
+                result = toBase(inputText, 10);
+                System.out.println("Decimal: " + result);
                 break;
             default:
                 System.out.println("Invalid choice. Please enter a number between 2, 8, 10, 16.");
                 break;
         }
+        return result;
     }
 }
