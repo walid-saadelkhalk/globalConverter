@@ -5,8 +5,20 @@ public class Text {
 
     
     public String getText() {
-        System.out.println("Enter the text you want to convert: ");
-        String text = input.nextLine();
+        String text;
+        while (true) {
+            System.out.println("Enter the text you want to convert: ");
+            text = input.nextLine();
+            if (isValidText(text)) {
+                break;
+            } else {
+                System.out.println("Invalid text. Enter the text you want to convert again : ");
+            }
+        }
         return text;
+    }
+
+    private boolean isValidText(String text) {
+        return text.matches("[a-zA-Z0-9]+");
     }
 }
