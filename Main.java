@@ -1,6 +1,7 @@
 import convert.ConvertTo;
 import encrypt.Encrypt;
 import text.Text;
+import java.util.Scanner;
 
 public class Main {
 
@@ -9,6 +10,7 @@ public class Main {
         Text text = new Text();
         ConvertTo converter = new ConvertTo();
         Encrypt encryptor = new Encrypt();
+        Scanner input = new Scanner(System.in);
 
         String inputText = text.getText();
 
@@ -16,24 +18,13 @@ public class Main {
             int shift = encryptor.getShiftValue();
             inputText = encryptor.encryptText(inputText, shift);
             System.out.println("Encrypted text: " + inputText);
-        } else {
-                // haxadecimal
-        String hexResult = converter.toBase(inputText, 16);
-        System.out.println("Hexadecimal: " + hexResult);
         }
-        // binary
-        String binaryResult = converter.toBase(inputText, 2);
-        System.out.println("Binary: " + binaryResult);
 
-        // octal
-        String octalResult = converter.toBase(inputText, 8);
-        System.out.println("Octal: " + octalResult);
+        System.out.println("Enter the base for conversion (2 for binary, 8 for octal, 10 for decimal, 16 for hexadecimal): ");
+        int base = input.nextInt();
 
-        // decimal
-        String decimalResult = converter.toBase(inputText, 10);
-        System.out.println("Decimal: " + decimalResult);
+        String baseResult = converter.toBase(inputText, base);
 
-        
-
+        System.out.println("Converted text in base " + base + ": " + baseResult);
     }
 }
