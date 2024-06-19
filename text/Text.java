@@ -14,7 +14,7 @@ public class Text {
     public String getText() {
         String text;
         while (true) {
-            System.out.println("Enter the text you want to convert: ");
+            
             text = scanner.nextLine();
             if (isValidText(text)) {
                 break;

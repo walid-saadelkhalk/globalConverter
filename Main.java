@@ -39,11 +39,23 @@ public class Main {
                     System.out.println("Do you want to revert the conversion? (yes/no)");
                     String revertChoice = inputScanner.nextLine();
                     if (revertChoice.equalsIgnoreCase("yes")) {
-                        String revertedText = reverter.revert(encryptedText, encodingChoice);
+                        String revertedText = reverter.revert(convertedText, encodingChoice);
                         System.out.println("Original Text: " + revertedText);
+
+                        // Ask if user wants to decrypt
+                        System.out.println("Do you want to decrypt the original text? (yes/no)");
+                        String decryptChoice = inputScanner.nextLine();
+                        if (decryptChoice.equalsIgnoreCase("yes")) {
+                            String decryptedText = encryptor.decryptAndConvert(revertedText, shift);
+                            System.out.println("Decrypted text: " + decryptedText);
+                        } else {
+                            System.out.println("Not decrypting the original text.");
+                        }
                     } else {
                         System.out.println("Not reverting the conversion.");
                     }
+                } else {
+                    System.out.println("Not converting the encrypted text.");
                 }
 
             } else if (userChoice == 2) {
@@ -60,6 +72,17 @@ public class Main {
                 if (revertChoice.equalsIgnoreCase("yes")) {
                     String revertedText = reverter.revert(convertedText, encodingChoice);
                     System.out.println("Original Text: " + revertedText);
+
+                    // Ask if user wants to decrypt
+                    System.out.println("Do you want to decrypt the original text? (yes/no)");
+                    String decryptChoice = inputScanner.nextLine();
+                    if (decryptChoice.equalsIgnoreCase("yes")) {
+                        int shift = encryptor.getShiftValue();
+                        String decryptedText = encryptor.decryptAndConvert(revertedText, shift);
+                        System.out.println("Decrypted text: " + decryptedText);
+                    } else {
+                        System.out.println("Not decrypting the original text.");
+                    }
                 } else {
                     System.out.println("Not reverting the conversion.");
                 }
