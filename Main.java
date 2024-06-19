@@ -22,25 +22,52 @@ public class Main {
                 System.out.println("Enter the text you want to encrypt: ");
                 String inputText = text.getText();
                 int shift = encryptor.getShiftValue();
-                encryptor.encryptAndConvert(inputText, shift);
+                String encryptedText = encryptor.encryptAndConvert(inputText, shift);
+                System.out.println("Encrypted and Converted text: " + encryptedText);
+
+                // Ask if user wants to convert the encrypted text
+                System.out.println("Do you want to convert the encrypted text to a different base? (yes/no): ");
+                String convertResponse = inputScanner.nextLine();
+                if (convertResponse.equalsIgnoreCase("yes")) {
+                    System.out.println("Choose the encoding: 1 for Hexadecimal, 2 for Binary, 3 for Octal, 4 for Decimal");
+                    int encodingChoice = inputScanner.nextInt();
+                    inputScanner.nextLine(); // Consume newline left-over
+                    String convertedText = converter.convertAndPrint(encryptedText, encodingChoice);
+                    System.out.println("Converted text in base " + encodingChoice + ": " + convertedText);
+
+                    // Ask if user wants to revert the conversion
+                    System.out.println("Do you want to revert the conversion? (yes/no)");
+                    String revertChoice = inputScanner.nextLine();
+                    if (revertChoice.equalsIgnoreCase("yes")) {
+                        String revertedText = reverter.revert(encryptedText, encodingChoice);
+                        System.out.println("Original Text: " + revertedText);
+                    } else {
+                        System.out.println("Not reverting the conversion.");
+                    }
+                }
+
             } else if (userChoice == 2) {
                 System.out.println("Enter the text you want to convert: ");
                 String inputText = text.getText();
                 System.out.println("Choose the encoding: 1 for Hexadecimal, 2 for Binary, 3 for Octal, 4 for Decimal");
                 int encodingChoice = inputScanner.nextInt();
-                converter.convertAndPrint(inputText, encodingChoice);
-
-                System.out.println("Do you want to revert the conversion? (yes/no)");
                 inputScanner.nextLine(); // Consume newline left-over
+                String convertedText = converter.convertAndPrint(inputText, encodingChoice);
+
+                // Ask if user wants to revert the conversion
+                System.out.println("Do you want to revert the conversion? (yes/no)");
                 String revertChoice = inputScanner.nextLine();
                 if (revertChoice.equalsIgnoreCase("yes")) {
-                    reverter.revertAndPrint(inputText, encodingChoice);
+                    String revertedText = reverter.revert(convertedText, encodingChoice);
+                    System.out.println("Original Text: " + revertedText);
                 } else {
                     System.out.println("Not reverting the conversion.");
                 }
+
             } else if (userChoice == 3) {
                 System.out.println("Quitting...");
                 break;
+
             } else {
                 System.out.println("Invalid choice. Please enter 1, 2, or 3.");
             }
