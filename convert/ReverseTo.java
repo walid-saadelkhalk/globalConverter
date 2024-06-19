@@ -28,23 +28,19 @@ public class ReverseTo {
         return num;
     }
 
-    public void revertAndPrint(String inputText, int choice) {
+    public String revert(String inputText, int choice) {
         switch (choice) {
             case 1:
-                System.out.println("Original Text from Hexadecimal: " + fromBase(inputText, 16));
-                break;
+                return fromBase(inputText, 16);
             case 2:
-                System.out.println("Original Text from Binary: " + fromBase(inputText, 2));
-                break;
+                return fromBase(inputText, 2);
             case 3:
-                System.out.println("Original Text from Octal: " + fromBase(inputText, 8));
-                break;
+                return fromBase(inputText, 8);
             case 4:
-                System.out.println("Original Text from Decimal: " + fromBase(inputText, 10));
-                break;
+                return fromBase(inputText, 10);
             default:
-                System.out.println("Invalid choice. Please enter a number between 1 and 4.");
-                break;
+                throw new IllegalArgumentException("Invalid choice. Please enter a number between 1 and 4.");
         }
     }
+
 }

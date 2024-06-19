@@ -23,6 +23,7 @@ public class Main {
                 int encodingChoice = inputScanner.nextInt();
                 String convertedText = converter.convertAndPrint(inputText, encodingChoice);
 
+                // Ask if user wants to revert the conversion
                 System.out.println("Do you want to revert the conversion? (yes/no)");
                 String revertChoice = inputScanner.next();
                 if (revertChoice.equalsIgnoreCase("yes")) {
@@ -30,9 +31,11 @@ public class Main {
                 } else {
                     System.out.println("Not reverting the conversion.");
                 }
+
             } else if (userChoice == 3) {
                 System.out.println("Quitting...");
                 break;
+
             } else {
                 System.out.println("Invalid choice. Please enter 1, 2, or 3.");
                 inputScanner.nextLine();
