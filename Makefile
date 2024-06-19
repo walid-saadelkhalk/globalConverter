@@ -19,8 +19,7 @@ run: compile
 
 # Nettoyage
 clean:
-	find $(SRC_DIRS) -name "*.class" -type f -delete
-	rm -f Main.class
+	PowerShell -Command "Get-ChildItem -Path . -Filter *.class -Recurse | Remove-Item"
 
 # Règle pour afficher l'aide
 help:

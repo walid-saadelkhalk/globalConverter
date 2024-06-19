@@ -1,4 +1,3 @@
-
 package convert;
 
 public class ConvertTo {
@@ -14,7 +13,7 @@ public class ConvertTo {
     private String intToBase(int num, int base) {
         /*
          * Check if the base is between 2 and 36.
-         * The base can't be less than 2 becasue we need at least two characters to represent a number.
+         * The base can't be less than 2 because we need at least two characters to represent a number.
          * The base can't be more than 36 because we only have 26 letters in the alphabet.
         */
         if (base < 2 || base > 36) {
@@ -50,7 +49,7 @@ public class ConvertTo {
                 break;
             case 2:
                 result = toBase(inputText, 2);
-                System.out.println("\n" +inputText + " in binary is : " + result);
+                System.out.println("\n" + inputText + " in binary is : " + result);
                 break;
             case 3:
                 result = toBase(inputText, 8);
@@ -61,6 +60,7 @@ public class ConvertTo {
                 System.out.println("\nDecimal: " + result);
                 break;
             default:
+                result = null;
                 System.out.println("\nInvalid choice. Please enter a number between 1, 2, 3, 4.");
                 break;
         }
