@@ -8,8 +8,18 @@ public class Encrypt {
     private ConvertTo converter = new ConvertTo();
 
     public int getShiftValue() {
-        System.out.println("\nEnter the shift value for Caesar cipher: ");
-        return input.nextInt();
+        int shift = -1;
+        while (true) {
+            try {
+                System.out.println("\nEnter the shift value for Caesar cipher: ");
+                shift = input.nextInt();
+                input.nextLine(); // Consume newline left-over
+                return shift;
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer value for the shift.");
+                input.next(); // Consume the invalid input
+            }
+        }
     }
 
     public String encryptAndConvert(String text, int shift) {
@@ -21,9 +31,7 @@ public class Encrypt {
             }
             encrypted.append(c);
         }
-        String encryptedText = encrypted.toString();
-
-        return encryptedText;
+        return encrypted.toString();
     }
 
     public String decryptAndConvert(String text, int shift) {
@@ -35,8 +43,6 @@ public class Encrypt {
             }
             decrypted.append(c);
         }
-        String decryptedText = decrypted.toString();
-
-        return decryptedText;
+        return decrypted.toString();
     }
 }
