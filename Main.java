@@ -27,6 +27,8 @@ public class Main {
                 String revertChoice = inputScanner.next();
                 if (revertChoice.equalsIgnoreCase("yes")) {
                     reverter.revertAndPrint(convertedText, encodingChoice);
+                } else {
+                    System.out.println("Not reverting the conversion.");
                 }
             } else if (userChoice == 3) {
                 System.out.println("Quitting...");
