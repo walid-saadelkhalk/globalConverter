@@ -2,13 +2,7 @@ package convert;
 
 public class ConvertTo {
 
-
     public String toBase(String input, int base) {
-        /*
-         * StringBuilder is a mutable sequence of characters. 
-         * It can modify the sequence of characters in the string without creating a new object.
-         */
-
         StringBuilder baseString = new StringBuilder();
         for (char c : input.toCharArray()) {
             baseString.append(intToBase((int) c, base));
@@ -16,13 +10,7 @@ public class ConvertTo {
         return baseString.toString();
     }
 
-    // Convert an integer to a base
     private String intToBase(int num, int base) {
-        /*
-         * Check if the base is between 2 and 36.
-         * The base can't be less than 2 becasue we need at least two characters to represent a number.
-         * The base can't be more than 36 because we only have 26 letters in the alphabet.
-         */
         if (base < 2 || base > 36) {
             throw new IllegalArgumentException("Base must be between 2 and 36");
         }
@@ -38,33 +26,36 @@ public class ConvertTo {
             num /= base;
         }
 
-        // We add zero padding to make sure the result is at least 2 or 3 characters long
         while (baseChars.length() < (base == 16 ? 2 : 3)) {
             baseChars.append('0');
         }
 
-        // Reverse the string to get the correct result
         return baseChars.reverse().toString();
     }
 
-    // Convert the input text to the desired base
-    public void convertAndPrint(String inputText, int choice) {
+    public String convertAndPrint(String inputText, int choice) {
+        String result = "";
         switch (choice) {
             case 1:
-                System.out.println("Hexadecimal: " + toBase(inputText, 16));
+                result = toBase(inputText, 16);
+                System.out.println("Hexadecimal: " + result);
                 break;
             case 2:
-                System.out.println("Binary: " + toBase(inputText, 2));
+                result = toBase(inputText, 2);
+                System.out.println("Binary: " + result);
                 break;
             case 3:
-                System.out.println("Octal: " + toBase(inputText, 8));
+                result = toBase(inputText, 8);
+                System.out.println("Octal: " + result);
                 break;
             case 4:
-                System.out.println("Decimal: " + toBase(inputText, 10));
+                result = toBase(inputText, 10);
+                System.out.println("Decimal: " + result);
                 break;
             default:
                 System.out.println("Invalid choice. Please enter a number between 1 and 4.");
                 break;
         }
+        return result;
     }
 }

@@ -1,12 +1,14 @@
 import java.util.Scanner;
 import text.Text;
 import convert.ConvertTo;
+import convert.ReverseTo;
 
 public class Main {
 
     public static void main(String[] args) {
         Text text = new Text();
         ConvertTo converter = new ConvertTo();
+        ReverseTo reverter = new ReverseTo();
         Scanner inputScanner = new Scanner(System.in);
 
         while (true) {
@@ -19,7 +21,13 @@ public class Main {
                 String inputText = text.getText();
                 System.out.println("Choose the encoding: 1 for Hexadecimal, 2 for Binary, 3 for Octal, 4 for Decimal");
                 int encodingChoice = inputScanner.nextInt();
-                converter.convertAndPrint(inputText, encodingChoice);
+                String convertedText = converter.convertAndPrint(inputText, encodingChoice);
+
+                System.out.println("Do you want to revert the conversion? (yes/no)");
+                String revertChoice = inputScanner.next();
+                if (revertChoice.equalsIgnoreCase("yes")) {
+                    reverter.revertAndPrint(convertedText, encodingChoice);
+                }
             } else if (userChoice == 3) {
                 System.out.println("Quitting...");
                 break;
