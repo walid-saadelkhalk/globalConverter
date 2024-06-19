@@ -1,22 +1,18 @@
 package encrypt;
 
 import java.util.Scanner;
+import convert.ConvertTo;
 
 public class Encrypt {
     private Scanner input = new Scanner(System.in);
-
-    public boolean askForEncryption() {
-        System.out.println("Do you want to encrypt the text before converting to hexadecimal? (yes/no): ");
-        String response = input.nextLine();
-        return response.equalsIgnoreCase("yes");
-    }
+    private ConvertTo converter = new ConvertTo();
 
     public int getShiftValue() {
-        System.out.println("Enter the shift value: ");
+        System.out.println("Enter the shift value for Caesar cipher: ");
         return input.nextInt();
     }
 
-    public String encryptText(String text, int shift) {
+    public String encryptAndConvert(String text, int shift) {
         StringBuilder encrypted = new StringBuilder();
         for (char c : text.toCharArray()) {
             if (Character.isLetter(c)) {
