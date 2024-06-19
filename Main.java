@@ -21,7 +21,7 @@ public class Main {
             } else if (userChoice == 2) {
                 System.out.println("Enter the text you want to convert: ");
                 String inputText = text.getText();
-                System.out.println("Choose the encoding: 1 for Hexadecimal, 2 for Binary, 3 for Octal, 4 for Decimal");
+                System.out.println("Choose the encoding: 16 for Hexadecimal, 2 for Binary, 8 for Octal, 10 for Decimal");
                 int encodingChoice = inputScanner.nextInt();
                 String baseResult = converter.toBase(inputText, encodingChoice);
                 System.out.println("Converted text in base " + encodingChoice + ": " + baseResult);

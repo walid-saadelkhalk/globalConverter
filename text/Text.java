@@ -32,13 +32,13 @@ public class Text {
                 if (convertResponse.equalsIgnoreCase("yes")) {
                     int encodingChoice;
                     do {
-                        System.out.println("Choose the encoding: 1 for Hexadecimal, 2 for Binary, 3 for Octal, 4 for Decimal");
+                        System.out.println("Choose the encoding: 16 for Hexadecimal, 2 for Binary, 8 for Octal, 10 for Decimal");
                         encodingChoice = scanner.nextInt();
                         scanner.nextLine(); // Consume newline left-over
-                        if (encodingChoice < 1 || encodingChoice > 4) {
-                            System.out.println("Invalid choice. Please enter a number between 1 and 4.");
+                        if (encodingChoice < 2 || encodingChoice > 16) {
+                            System.out.println("Invalid choice. Please enter a number between 2, 8, 10 and 16.");
                         }
-                    } while (encodingChoice < 1 || encodingChoice > 4);
+                    } while (encodingChoice < 2 || encodingChoice > 16);
 
                     ConvertTo converter = new ConvertTo();
                     String baseResult = converter.toBase(encryptedText, encodingChoice);
