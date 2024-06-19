@@ -8,7 +8,7 @@ public class Encrypt {
     private ConvertTo converter = new ConvertTo();
 
     public int getShiftValue() {
-        System.out.println("Enter the shift value for Caesar cipher: ");
+        System.out.println("\nEnter the shift value for Caesar cipher: ");
         return input.nextInt();
     }
 
@@ -31,7 +31,7 @@ public class Encrypt {
         for (char c : text.toCharArray()) {
             if (Character.isLetter(c)) {
                 char base = Character.isLowerCase(c) ? 'a' : 'A';
-                c = (char) ((c - base - shift + 26) % 26 + base); // Decryption formula
+                c = (char) ((c - base - shift + 26) % 26 + base);
             }
             decrypted.append(c);
         }

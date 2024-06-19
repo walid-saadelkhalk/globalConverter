@@ -46,22 +46,22 @@ public class ConvertTo {
         switch (choice) {
             case 1:
                 result = toBase(inputText, 16);
-                System.out.println("Hexadecimal: " + result);
+                System.out.println("\nHexadecimal: " + result);
                 break;
             case 2:
                 result = toBase(inputText, 2);
-                System.out.println("Binary: " + result);
+                System.out.println("\n" +inputText + " in binary is : " + result);
                 break;
             case 3:
                 result = toBase(inputText, 8);
-                System.out.println("Octal: " + result);
+                System.out.println("\nOctal: " + result);
                 break;
             case 4:
                 result = toBase(inputText, 10);
-                System.out.println("Decimal: " + result);
+                System.out.println("\nDecimal: " + result);
                 break;
             default:
-                System.out.println("Invalid choice. Please enter a number between 2, 8, 10, 16.");
+                System.out.println("\nInvalid choice. Please enter a number between 1, 2, 3, 4.");
                 break;
         }
         return result;
