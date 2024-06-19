@@ -15,11 +15,16 @@ public class Text {
             case 1:
                 System.out.println("Encrypting...");
                 break;
+            
             case 2:
                 String text = getText();
-                // Use the text for something, e.g., print it
                 System.out.println("You entered: " + text);
                 break;
+
+            case 3:
+            
+                break;
+
             default:
                 System.out.println("Invalid choice. Please enter 1 or 2.");
                 break;
