@@ -25,6 +25,22 @@ public class Encrypt {
             }
             encrypted.append(c);
         }
-        return encrypted.toString();
+        String encryptedText = encrypted.toString();
+
+        return encryptedText;
+    }
+
+    public String decryptAndConvert(String text, int shift) {
+        StringBuilder decrypted = new StringBuilder();
+        for (char c : text.toCharArray()) {
+            if (Character.isLetter(c)) {
+                char base = Character.isLowerCase(c) ? 'a' : 'A';
+                c = (char) ((c - base - shift + 26) % 26 + base); // Decryption formula
+            }
+            decrypted.append(c);
+        }
+        String decryptedText = decrypted.toString();
+
+        return decryptedText;
     }
 }
