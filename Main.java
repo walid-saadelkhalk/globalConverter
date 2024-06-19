@@ -19,7 +19,7 @@ public class Main {
                 text.getChoice(userChoice);
             } else if (userChoice == 2) {
                 String inputText = text.getText();
-                System.out.println("Choose the encoding: 1 for Hexadecimal, 2 for Binary, 3 for Octal, 4 for Decimal");
+                System.out.println("Choose the encoding: 16 for Hexadecimal, 2 for Binary, 8 for Octal, 10 for Decimal");
                 int encodingChoice = inputScanner.nextInt();
                 String convertedText = converter.convertAndPrint(inputText, encodingChoice);
 

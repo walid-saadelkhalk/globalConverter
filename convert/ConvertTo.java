@@ -55,7 +55,7 @@ public class ConvertTo {
                 System.out.println("Decimal: " + result);
                 break;
             default:
-                System.out.println("Invalid choice. Please enter a number between 1 and 4.");
+                System.out.println("Invalid choice. Please enter a number between 2, 8, 10, 16.");
                 break;
         }
         return result;
