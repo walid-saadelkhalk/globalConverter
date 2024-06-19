@@ -26,7 +26,9 @@ public class ConvertTo {
             num /= base;
         }
 
-        while (baseChars.length() < (base == 16 ? 2 : 3)) {
+        // Add zero padding to make sure the result is at least 8 characters long for binary
+        int requiredLength = (base == 2) ? 8 : (base == 16 ? 2 : 3);
+        while (baseChars.length() < requiredLength) {
             baseChars.append('0');
         }
 
