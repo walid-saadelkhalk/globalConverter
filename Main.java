@@ -1,30 +1,38 @@
+import java.util.Scanner;
+import text.Text;
 import convert.ConvertTo;
 import encrypt.Encrypt;
-import text.Text;
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-
-        Text text = new Text();
-        ConvertTo converter = new ConvertTo();
         Encrypt encryptor = new Encrypt();
-        Scanner input = new Scanner(System.in);
+        Text text = new Text(encryptor);
+        ConvertTo converter = new ConvertTo();
+        Scanner inputScanner = new Scanner(System.in);
 
-        String inputText = text.getText();
+        while (true) {
+            System.out.println("Enter your choice (1 for Encrypt, 2 for Convert Text, 3 to Quit): ");
+            int userChoice = inputScanner.nextInt();
+            inputScanner.nextLine();  // Consume newline left-over
 
-        if (encryptor.askForEncryption()) {
-            int shift = encryptor.getShiftValue();
-            inputText = encryptor.encryptText(inputText, shift);
-            System.out.println("Encrypted text: " + inputText);
+            if (userChoice == 1) {
+                text.getChoice(userChoice);
+            } else if (userChoice == 2) {
+                System.out.println("Enter the text you want to convert: ");
+                String inputText = text.getText();
+                System.out.println("Choose the encoding: 1 for Hexadecimal, 2 for Binary, 3 for Octal, 4 for Decimal");
+                int encodingChoice = inputScanner.nextInt();
+                String baseResult = converter.toBase(inputText, encodingChoice);
+                System.out.println("Converted text in base " + encodingChoice + ": " + baseResult);
+            } else if (userChoice == 3) {
+                System.out.println("Quitting...");
+                break;
+            } else {
+                System.out.println("Invalid choice. Please enter 1, 2, or 3.");
+            }
         }
 
-        System.out.println("Enter the base for conversion (2 for binary, 8 for octal, 10 for decimal, 16 for hexadecimal): ");
-        int base = input.nextInt();
-
-        String baseResult = converter.toBase(inputText, base);
-
-        System.out.println("Converted text in base " + base + ": " + baseResult);
+        inputScanner.close();
     }
 }
