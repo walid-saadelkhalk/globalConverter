@@ -5,17 +5,16 @@ public class ConvertTo {
     public String toBase(String input, int base) {
         StringBuilder baseString = new StringBuilder();
         for (char c : input.toCharArray()) {
-            baseString.append(intToBase((int) c, base));
+            if (Character.isLetterOrDigit(c)) {
+                baseString.append(intToBase((int) c, base));
+            } else {
+                baseString.append(c); // Laisser les caractères spéciaux inchangés
+            }
         }
         return baseString.toString();
     }
 
     private String intToBase(int num, int base) {
-        /*
-         * Check if the base is between 2 and 36.
-         * The base can't be less than 2 because we need at least two characters to represent a number.
-         * The base can't be more than 36 because we only have 26 letters in the alphabet.
-        */
         if (base < 2 || base > 36) {
             throw new IllegalArgumentException("Base must be between 2 and 36");
         }
@@ -31,7 +30,6 @@ public class ConvertTo {
             num /= base;
         }
 
-        // Add zero padding to make sure the result is at least 8 characters long for binary
         int requiredLength = (base == 2) ? 8 : (base == 16 ? 2 : 3);
         while (baseChars.length() < requiredLength) {
             baseChars.append('0');

@@ -27,6 +27,7 @@ public class Encrypt {
                 char base = Character.isLowerCase(c) ? 'a' : 'A';
                 c = (char) ((c - base + shift) % 26 + base);
             }
+            // Laisser les caractères spéciaux inchangés
             encrypted.append(c);
         }
         return encrypted.toString();
@@ -39,6 +40,7 @@ public class Encrypt {
                 char base = Character.isLowerCase(c) ? 'a' : 'A';
                 c = (char) ((c - base - shift + 26) % 26 + base);
             }
+            // Laisser les caractères spéciaux inchangés
             decrypted.append(c);
         }
         return decrypted.toString();

@@ -5,9 +5,15 @@ public class ReverseTo {
     public String fromBase(String input, int base) {
         StringBuilder result = new StringBuilder();
         int length = (base == 2) ? 8 : ((base == 16) ? 2 : 3);
-        for (int i = 0; i < input.length(); i += length) {
-            String part = input.substring(i, Math.min(i + length, input.length()));
-            result.append((char) baseToInt(part, base));
+        for (int i = 0; i < input.length();) {
+            if (Character.isLetterOrDigit(input.charAt(i))) {
+                String part = input.substring(i, Math.min(i + length, input.length()));
+                result.append((char) baseToInt(part, base));
+                i += length;
+            } else {
+                result.append(input.charAt(i)); // Laisser les caractères spéciaux inchangés
+                i++;
+            }
         }
         return result.toString();
     }
@@ -42,5 +48,4 @@ public class ReverseTo {
                 throw new IllegalArgumentException("Invalid choice. Please enter a number between 1 and 4.");
         }
     }
-
 }
