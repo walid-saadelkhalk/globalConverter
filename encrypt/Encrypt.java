@@ -1,11 +1,9 @@
 package encrypt;
 
 import java.util.Scanner;
-import convert.ConvertTo;
 
 public class Encrypt {
     private Scanner input = new Scanner(System.in);
-    private ConvertTo converter = new ConvertTo();
 
     public int getShiftValue() {
         int shift = -1;
