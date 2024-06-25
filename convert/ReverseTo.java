@@ -1,18 +1,18 @@
 package convert;
 
+/*
+ * ReverseTo class is responsible for converting a number from a given base to a string.
+ * It provides methods to convert the number to a string and revert the conversion.
+ */
+
 public class ReverseTo {
 
     public String fromBase(String input, int base) {
         StringBuilder result = new StringBuilder();
-        int length = (base == 2) ? 8 : ((base == 16) ? 2 : 3);
-        for (int i = 0; i < input.length();) {
-            if (Character.isLetterOrDigit(input.charAt(i))) {
-                String part = input.substring(i, Math.min(i + length, input.length()));
+        String[] parts = input.split(" ");
+        for (String part : parts) {
+            if (!part.isEmpty()) {
                 result.append((char) baseToInt(part, base));
-                i += length;
-            } else {
-                result.append(input.charAt(i)); // Laisser les caractères spéciaux inchangés
-                i++;
             }
         }
         return result.toString();

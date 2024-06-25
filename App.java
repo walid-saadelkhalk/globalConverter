@@ -4,6 +4,12 @@ import convert.ConvertTo;
 import convert.ReverseTo;
 import encrypt.Encrypt;
 
+/*
+ * App class is the main class that runs the application.
+ * It provides the user with options to encrypt, convert text, and quit the application.
+ * It also handles the user input and calls the appropriate methods to perform the chosen operation.
+ */
+
 public class App {
     private Encrypt encryptor;
     private Text text;
@@ -21,6 +27,7 @@ public class App {
 
     public void run() {
         while (true) {
+            
             System.out.println("\nWhat do you want to do?\n1 for Encrypt \n2 for Convert Text \n3 to Quit");
             int userChoice = getUserChoice(3);
 

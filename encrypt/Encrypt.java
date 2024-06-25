@@ -2,6 +2,10 @@ package encrypt;
 
 import java.util.Scanner;
 
+/*
+ * Encrypt class is responsible for encrypting and decrypting text using the Caesar cipher.
+ * It provides methods to get the shift value from the user, encrypt the text, and decrypt the text.
+ */
 public class Encrypt {
     private Scanner input = new Scanner(System.in);
 

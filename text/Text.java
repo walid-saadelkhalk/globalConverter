@@ -3,6 +3,12 @@ package text;
 import java.util.Scanner;
 import encrypt.Encrypt;
 
+
+/*
+ * Text class is responsible for getting the text input from the user.
+ * It validates the input text and returns it to the caller.
+ * The input text should contain only alphabets, digits, spaces, and some special characters.
+ */
 public class Text {
     private Scanner inputScanner;
     private Encrypt encryptor;
@@ -24,7 +30,6 @@ public class Text {
     }
 
     private boolean isValidText(String text) {
-        // Autoriser les lettres, chiffres, espaces, points, virgules et apostrophes
         return text.matches("[a-zA-Z0-9 ,.']+");
     }
 }

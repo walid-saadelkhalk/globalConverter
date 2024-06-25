@@ -1,17 +1,19 @@
 package convert;
 
+
+/*
+ * ConvertTo class is responsible for converting a string to a number in a given base.
+ * It provides methods to convert the string to a number in a given base and print the result.
+ */
+
 public class ConvertTo {
 
     public String toBase(String input, int base) {
         StringBuilder baseString = new StringBuilder();
         for (char c : input.toCharArray()) {
-            if (Character.isLetterOrDigit(c)) {
-                baseString.append(intToBase((int) c, base));
-            } else {
-                baseString.append(c); // Laisser les caractères spéciaux inchangés
-            }
+            baseString.append(intToBase((int) c, base)).append(" ");
         }
-        return baseString.toString();
+        return baseString.toString().trim();
     }
 
     private String intToBase(int num, int base) {

@@ -1,27 +1,27 @@
-# Définir les variables
+# Variables are defined using the syntax VAR = value
 JAVAC = javac
 JAVA = java
 SRC_DIRS = text convert crypt
 
-# Trouver tous les fichiers Java dans les sous-répertoires
+# Find all .java files in the SRC_DIRS directories
 SRC_FILES = $(wildcard $(foreach dir, $(SRC_DIRS), $(dir)/*.java)) Main.java
 
-# Règle par défaut
+# Default target
 all: run
 
 # Compilation
 compile:
 	$(JAVAC) $(SRC_FILES)
 
-# Exécution
+# Executing
 run: compile
 	$(JAVA) Main
 
-# Nettoyage
+# Clean
 clean:
 	PowerShell -Command "Get-ChildItem -Path . -Filter *.class -Recurse | Remove-Item"
 
-# Règle pour afficher l'aide
+# Rules to print help
 help:
 	@echo "Utilisation :"
 	@echo "  make          - Compile et exécute le fichier Main.java"
